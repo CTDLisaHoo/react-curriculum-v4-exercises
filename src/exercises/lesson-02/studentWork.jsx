@@ -9,15 +9,9 @@ import SnackList from './SnackList.jsx';
 export default function StudentWork() {
   return (
     <div>
-      <p>
-        <SnackHeader />
-      </p>
-      <p>
-        <SnackList />
-      </p>
-      <p>
-        <SnackFooter />
-      </p>
+      <SnackHeader />
+      <SnackList />
+      <SnackFooter />
     </div>
   );
 }

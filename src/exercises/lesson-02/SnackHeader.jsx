@@ -1,9 +1,5 @@
 function SnackHeader() {
-  return (
-    <div>
-      <h1>Snack Rating</h1>
-    </div>
-  );
+  return <h1>Snack Rankings</h1>;
 }
 
 export default SnackHeader;

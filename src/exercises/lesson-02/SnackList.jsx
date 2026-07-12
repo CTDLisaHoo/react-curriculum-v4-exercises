@@ -1,11 +1,11 @@
-const snacks = [
-  { name: 'Popcorn', rank: 4 },
-  { name: 'Chips', rank: 3 },
-  { name: 'Cookies', rank: 2 },
-  { name: 'Chocolate', rank: 1 },
-];
-
 function SnackList() {
+  const snacks = [
+    { name: 'Popcorn', rank: 4 },
+    { name: 'Chips', rank: 3 },
+    { name: 'Cookies', rank: 2 },
+    { name: 'Chocolate', rank: 1 },
+  ];
+
   {
     /* Sort snacks from favorite (rank 1) to least favorite */
   }
