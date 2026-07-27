@@ -6,10 +6,22 @@ import { useEffect, useState } from 'react';
 export default function BugStrictMode() {
   const [count, setCount] = useState(0);
 
-  useEffect(() => {
+  /*useEffect(() => {
     setInterval(() => {
       setCount((c) => c + 1);
     }, 1000);
+  }, []);*/
+
+  useEffect(() => {
+    //Assign interval ID to a variable
+    const intervalId = setInterval(() => {
+      setCount((c) => c + 1);
+    }, 1000);
+
+    //Return a cleanup function to clear the interval on unmount / re-render
+    return () => {
+      clearInterval(intervalId);
+    };
   }, []);
 
   return (
@@ -21,3 +33,8 @@ export default function BugStrictMode() {
 }
 
 // Write your explanation of how StrictMode helps us catch this bug
+/*
+React StrictMode helps find bugs by running 'useEffect' twice in development. 
+Without cleaning up the 'setInterval', multiple timers run and the counter increments too fast. 
+Using 'clearInterval()' in the cleanup function removes the old timer, so the counter updates correctly.
+*/
