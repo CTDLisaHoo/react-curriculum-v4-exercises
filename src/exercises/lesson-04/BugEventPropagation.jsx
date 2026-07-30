@@ -6,7 +6,9 @@ export default function BugEventPropagation() {
     alert("RED BOX CLICKED ❌ Don't show me!");
   }
 
-  function handleInnerClick() {
+  function handleInnerClick(event) {
+    // Get event to stop bubbling
+    event.stopPropagation(); // Prevent event from bubbling to the parent
     alert('Button Clicked ✅');
   }
 
