@@ -25,11 +25,25 @@ const POSTS_ENDPOINT = 'https://jsonplaceholder.typicode.com/posts/';
 export function getPosts() {
   console.log('[getPosts]: fetching list of posts');
 
-  // TODO: use this `url` const to fetch the list of posts
-  // and return some JSON data.
-  // You may delete this comment once you've finished the implementation.
-  // eslint-disable-next-line no-unused-vars
-  const url = POSTS_ENDPOINT;
+  const url = `${POSTS_ENDPOINT}?_limit=10`;
+
+  return fetch(url)
+    .then((resp) => {
+      if (!resp.ok) {
+        throw new Error(`HTTP error: ${resp.status}`);
+      }
+
+      return resp.json();
+    })
+    .then((posts) => {
+      return posts;
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    })
+    .finally(() => {
+      console.log('[getPosts]: request finished');
+    });
 }
 
 /**
@@ -46,9 +60,20 @@ export function getSinglePost(postId) {
 
   console.log('[getSinglePost]: fetching post with id:', postId);
 
-  // TODO: use this `url` const to fetch the single post
-  // and return some JSON data.
-  // You may delete this comment once you've finished the implementation.
-  // eslint-disable-next-line no-unused-vars
   const url = `${POSTS_ENDPOINT}${postId}`;
+
+  return fetch(url)
+    .then((resp) => {
+      if (!resp.ok) {
+        throw new Error(`HTTP error: ${resp.status}`);
+      }
+
+      return resp.json();
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    })
+    .finally(() => {
+      console.log('[getSinglePost]: request finished');
+    });
 }
