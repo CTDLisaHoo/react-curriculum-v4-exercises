@@ -2,8 +2,17 @@ import React, { useState } from 'react';
 
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
+import { Route, Routes } from 'react-router-dom';
+import { products as productsData } from './data/products.js';
+import Account from './pages/Account.jsx';
+import Checkout from './pages/Checkout.jsx';
+import Home from './pages/Home.jsx';
+import NotFound from './pages/NotFound.jsx';
+import ProductDetails from './pages/ProductDetails.jsx';
 
 export default function StudentWork() {
+  const [products] = useState(productsData);
+
   const [user, setUser] = useState({
     isLoggedIn: true,
     firstName: 'Avery',
@@ -39,7 +48,18 @@ export default function StudentWork() {
 
       <Header user={user} />
 
-      <main style={{ padding: 12 }}></main>
+      <main style={{ padding: 12 }}>
+        <Routes>
+          <Route path="/" element={<Home products={products} />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route
+            path="/products/:id"
+            element={<ProductDetails products={products} />}
+          />
+          {user.isLoggedIn && <Route path="/account" element={<Account />} />}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
 
       <Footer />
     </div>
