@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export default function Header({ user }) {
   // Active link styling helper
@@ -22,6 +22,17 @@ export default function Header({ user }) {
         >
           History API (MDN)
         </a>
+        <NavLink style={navLinkStyles} to="/">
+          Home
+        </NavLink>
+        <NavLink style={navLinkStyles} to="/checkout">
+          Checkout
+        </NavLink>
+        {user.isLoggedIn && (
+          <NavLink style={navLinkStyles} to="/account">
+            Account
+          </NavLink>
+        )}
       </nav>
 
       <div style={{ marginTop: 8 }}>
